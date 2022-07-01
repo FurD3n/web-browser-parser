@@ -166,14 +166,14 @@ def parser_argument():
         cols = [column[0] for column in b.description] # 컬럼 가져옴
         datadf = pd.DataFrame.from_records(data=b.fetchall(), columns=cols)
         df = pd.DataFrame(datadf)
-        df.to_csv(firefoxpath + "urls.csv")
+        df.to_csv(allpath + "urls_firefox.csv")
             
             
         b.execute("SELECT * FROM `moz_bookmarks` ;")
         cols = [column[0] for column in b.description]
         datadf = pd.DataFrame.from_records(data=b.fetchall(), columns=cols)
         df = pd.DataFrame(datadf)
-        df.to_csv(firefoxpath + "bookmarks.csv")
+        df.to_csv(allpath + "bookmarks_firefox.csv")
         print(df)
             
         b.execute("SELECT * FROM `moz_annos` ;")
@@ -181,7 +181,7 @@ def parser_argument():
         datadf = pd.DataFrame.from_records(data=b.fetchall(), columns=cols )
         conn.close()
         df = pd.DataFrame(datadf)
-        df.to_csv(firefoxpath + "downloads.csv", sep='\t', escapechar='\b', header=False, index=False)
+        df.to_csv(allpath + "downloads_firefox.csv", sep='\t', escapechar='\b', header=False, index=False)
         print(df)
             
 if __name__ == '__main__':
